@@ -1,0 +1,74 @@
+﻿<Window x:Class="TicTacToeTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TicTacToeTest"
+        
+        xmlns:viewModels="clr-namespace:TicTacToeTest.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" >
+    <Grid
+        >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <TextBlock Text="Kółko i Krzyżyk" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 0 0"/>
+            <Button Content="New Game" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 40 0" Padding="10" Command="{Binding ResetScoresCommand}"/>
+        </Grid>
+        <Grid Margin="40" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--#region Board -->
+            <Grid x:Name="BoardGrid">                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="Field_1" Content="{Binding BoardElements[0].Symbol}"  Grid.Row="0" Grid.Column="0"
+                        FontSize="60" Command="{Binding DrawSignCommands[0]}"/>
+                <Button x:Name="Field_2" Content="{Binding BoardElements[1].Symbol}" Grid.Row="0" Grid.Column="1"
+                        FontSize="60" Command="{Binding DrawSignCommands[1]}" />
+                <Button x:Name="Field_3" Content="{Binding BoardElements[2].Symbol}" Grid.Row="0" Grid.Column="2"
+                        FontSize="60" Command="{Binding DrawSignCommands[2]}" />
+                <Button x:Name="Field_4" Content="{Binding BoardElements[3].Symbol}" Grid.Row="1" Grid.Column="0"
+                        FontSize="60" Command="{Binding DrawSignCommands[3]}" />
+                <Button x:Name="Field_5" Content="{Binding BoardElements[4].Symbol}" Grid.Row="1" Grid.Column="1"
+                        FontSize="60" Command="{Binding DrawSignCommands[4]}" />
+                <Button x:Name="Field_6" Content="{Binding BoardElements[5].Symbol}" Grid.Row="1" Grid.Column="2"
+                        FontSize="60" Command="{Binding DrawSignCommands[5]}" />
+                <Button x:Name="Field_7" Content="{Binding BoardElements[6].Symbol}" Grid.Row="2" Grid.Column="0"
+                        FontSize="60" Command="{Binding DrawSignCommands[6]}" />
+                <Button x:Name="Field_8" Content="{Binding BoardElements[7].Symbol}" Grid.Row="2" Grid.Column="1"
+                        FontSize="60" Command="{Binding DrawSignCommands[7]}" />
+                <Button x:Name="Field_9" Content="{Binding BoardElements[8].Symbol}" Grid.Row="2" Grid.Column="2"
+                        FontSize="60" Command="{Binding DrawSignCommands[8]}" CommandParameter="8" />
+            </Grid>
+            <!--#endregion-->
+            <Grid Grid.Column="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel  HorizontalAlignment="Center">
+                    <TextBlock Text="Player1: " FontSize="30"/>
+                    <TextBlock Text="{Binding Player1_Wins}" FontSize="60" HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel  Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBlock Text="Player2: " FontSize="30"/>
+                    <TextBlock Text="{Binding Player2_Wins}" FontSize="60" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
